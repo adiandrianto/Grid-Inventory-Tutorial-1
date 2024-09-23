@@ -1,11 +1,10 @@
 extends Control
 
 @onready var slot_scene = preload("res://slot.tscn")
-@onready var grid_container = $Background/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
+@onready var grid_container = $Background/MarginContainer/VBoxContainer/GridContainer
 @onready var item_scene = preload("res://item.tscn")
 @onready var scroll_container = $Background/MarginContainer/VBoxContainer/ScrollContainer
 @onready var col_count = grid_container.columns #save column number
-@onready var grid_container2 = $Background2/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 
 var grid_array := []
 var item_held = null
@@ -26,11 +25,11 @@ func _process(delta):
 			rotate_item()
 		
 		if Input.is_action_just_pressed("mouse_leftclick"):
-			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+			if grid_container.get_global_rect().has_point(get_global_mouse_position()):
 				place_item()
 	else:
 		if Input.is_action_just_pressed("mouse_leftclick"):
-			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+			if grid_container.get_global_rect().has_point(get_global_mouse_position()):
 				pick_item()
 	
 	
@@ -153,7 +152,5 @@ func pick_item():
 	set_grids.call_deferred(current_slot)
 	
 	
-
-
 func _on_add_slot_pressed():
 	create_slot()

@@ -25,7 +25,7 @@ func load_item(a_ItemID : int) -> void:
 		for i in grid :
 			converter_array.push_back(int(i))
 		item_grids.push_back(converter_array)
-	#print(item_grids)
+	print(item_grids)
 
 #rotate 90 degress CW
 func rotate_item():
